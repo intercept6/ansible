@@ -1,0 +1,7 @@
+# file: chrony/default/main.yml
+
+# Basic settings
+ntp_server1: ntp1.jst.mfeed.ad.jp
+ntp_server2: ntp2.jst.mfeed.ad.jp
+ntp_server3: ntp3.jst.mfeed.ad.jp
+allow_network: 127.0.0.1/8

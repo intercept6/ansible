@@ -1,8 +1,8 @@
 #firewalld stop & disable
 
 - name: Install Firewalld
-    yum: name=firewalld state=latest
+  yum: name=firewalld state=latest
 
 - name: Stop & Disable firewalld
-    service: name=firewalld enabled=false state=stopped
-    ignore_errors: True
+  service: name=firewalld enabled=false state=stopped
+  ignore_errors: True

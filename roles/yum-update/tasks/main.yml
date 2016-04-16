@@ -1,0 +1,4 @@
+#yum update
+
+- name: Upgrade all packages
+  yum: name=* state=latest

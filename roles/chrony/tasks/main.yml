@@ -1,0 +1,15 @@
+# 
+
+- name: Install chrony
+  yum: name=chrony state=latest
+
+- name: Chrony update the chrony.conf
+  template:
+    #src: role/chrony/template/chrony.conf.j2
+    src: chrony.conf.j2
+    dest: /etc/chrony.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart chrony
