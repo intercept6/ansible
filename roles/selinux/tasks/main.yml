@@ -1,9 +1,5 @@
 #SELinuxを無効化
 
-- hosts: all
-  sudo: no
-  remote_user: root
-  tasks:
   - name: Install libselinux-python
     yum: name=libselinux-python state=present
   
@@ -20,6 +16,9 @@
     poll: 1
     when: selinux_result.stdout != "Disabled"
 
-  - name: Wait reboot
-    local_action: wait_for host={{ inventory_hostname }} port=22 delay=10
+  - name: Wait for SSH port down
+    local_action: wait_for host={{ inventroy_hostname }} port=22 state=stopped
+
+  - name: Wait for SSH port up
+    local_action: wait_for host={{ inventory_hostname }} port=22 delay=60
     when: selinux_result.stdout != "Disabled"
