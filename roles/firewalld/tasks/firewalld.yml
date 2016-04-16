@@ -1,0 +1,9 @@
+#firewalld stop & disable
+
+- hosts: all
+  sudo: no
+  remote_user: root
+  tasks:
+  - name: Stop & Disable firewalld
+    service: name=firewalld enabled=false state=stopped
+    ignore_errors: True
