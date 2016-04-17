@@ -3,6 +3,22 @@
 - name: Install chrony
   yum: name=chrony state=latest
 
+- name: Start firewalld
+  service:
+    name: firewalld
+    state: started
+
+- name: Firewalld allow port 123/udp
+  firewalld:
+    service: ntp
+    permanent: true
+    state: enabled
+
+- name: Stop firewalld
+  service:
+    name: firewalld
+    state: stopped
+
 - name: Chrony update the chrony.conf
   template:
     #src: role/chrony/template/chrony.conf.j2

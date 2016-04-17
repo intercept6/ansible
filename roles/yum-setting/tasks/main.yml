@@ -1,0 +1,4 @@
+#yum install yum-fastestmirror
+
+- name: Install yum-fastestmirror
+  yum: name=yum-fastestmirror state=latest

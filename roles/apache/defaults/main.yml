@@ -1,0 +1,5 @@
+# file: apache/default/main.yml
+
+# Basic settings
+serveradmin: root@localhost
+servername: localhost.localdomain:80
