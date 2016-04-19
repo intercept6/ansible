@@ -2,9 +2,10 @@
   hosts: all
   remote_user: root
   roles:
-    - yum-setting
-    - yum-update
-    - selinux
-    - firewalld
-    - chrony
+    - reboot
+    #- yum-setting
+    #- yum-update
+    #- selinux
+    #- firewalld
+    #- chrony
     #- apache
