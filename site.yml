@@ -1,11 +1,9 @@
 - name: CentOS7 common configuration
-  hosts: all
+  hosts: centos7
   remote_user: root
   roles:
+    - yum-setting
+    - yum-update
+    - selinux
+    - firewalld
     - ipv6-disable
-    #- yum-setting
-    #- yum-update
-    #- selinux
-    #- firewalld
-    #- chrony
-    #- apache
