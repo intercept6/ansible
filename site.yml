@@ -7,3 +7,13 @@
     - selinux
     - firewalld
     - ipv6-disable
+    - epel
+
+- name: tomedu
+  hosts: tomedu
+  remote_user: root
+  roles:
+    - yum-setting
+    - yum-update
+    - firewalld
+    - epel
