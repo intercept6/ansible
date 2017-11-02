@@ -1,4 +1,4 @@
 hosts
 ansible.cfg
 group_vars
-site.retry
+*.retry
