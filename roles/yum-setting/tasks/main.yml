@@ -1,7 +1,0 @@
-#yum install
-
-- name: Install yum-fastestmirror yum-plugin-priorities
-  yum: name=yum-fastestmirror,yum-plugin-priorities state=latest
-
-- name: Set CentOS-Base Priority=1
-  shell: sed -i -e "s/\]$/\]\npriority=1/g" /etc/yum.repos.d/CentOS-Base.repo

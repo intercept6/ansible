@@ -1,7 +1,8 @@
-#yum install
-
-- name: Install epel-release
-  yum: name=epel-release state=latest
-
-- name: Set epel repo disable
-  shell: sed -i -e "s/enabled=1/enabled=0/g" /etc/yum.repos.d/epel.repo
+---
+- name: Add EPEL repository
+  yum_repository:
+    name: epel
+    description: EPEL YUM repo
+    baseurl: https://download.fedoraproject.org/pub/epel/$releaseserver/$basearch/
+    gpgcheck: no
+    enabled: no

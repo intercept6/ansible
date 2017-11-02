@@ -1,5 +1,0 @@
-# file: apache/default/main.yml
-
-# Basic settings
-serveradmin: "root@{{ ansible_fqdn }}"
-servername: "{{ ansible_fqdn }}:80"
