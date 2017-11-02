@@ -1,0 +1,11 @@
+---
+- name: owncloud
+  hosts: owncloud
+  remote_user: vagrant
+  become: true
+
+  roles:
+    - common
+    - httpd
+    - mariadb
+    - owncloud
