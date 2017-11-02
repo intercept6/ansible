@@ -1,5 +1,7 @@
+---
 - name: CentOS7 kensho
   hosts: kensho
-  remote_user: root
-  roles:
-    - common
+  become: yes
+
+
+- import_playbook: common.yml
