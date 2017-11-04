@@ -7,6 +7,6 @@
   roles:
     - common
     - epel
-      #- httpd
+    - httpd
       #    - mariadb
       #    - owncloud
