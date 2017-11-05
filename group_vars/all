@@ -1,2 +1,5 @@
 ---
-httpd_servername: www.example.local 
+httpd_servername: www.example.local
+mariadb_hostname: localhost
+mariadb_su_user: root
+mariadb_su_password: password

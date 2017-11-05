@@ -1,0 +1,14 @@
+---
+- name: Install MariaDB
+  yum:
+    name:
+      - MariaDB-server
+      - MariaDB-client
+    enablerepo: MariaDB
+    state: present
+
+- name: Start and enable MariaDB Service
+  systemd:
+    name: mariadb
+    state: started
+    enabled: yes

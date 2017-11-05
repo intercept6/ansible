@@ -1,0 +1,68 @@
+---
+# mysql_secure_installation
+# Enter current password for root (enter for none):
+# Set root password? [Y/n] Y
+# New password: vagrant
+# Re-enter new password: vagrant
+# Remove anonymous users? [Y/n] Y
+# Disallow root login remotely? [Y/n] Y
+# Remove test database and access to it? [Y/n] Y
+# Reload privilege tables now? [Y/n] Y
+
+- name: Install python mysqldb module
+  yum:
+    name: MySQL-python
+    state: latest
+
+- name: Create /root/.my.cnf
+  template:
+    src: .my.cnf.j2
+    dest: /root/.my.cnf
+    owner: root
+    group: root
+    mode: 0600
+  become: yes
+  notify: Restart mariadb
+
+- name: Set root password
+  mysql_user:
+    name: root
+    login_user: "{{ mariadb_su_user }}"
+    host_all: yes
+    password: "{{ mariadb_su_password }}"
+  notify: Restart mariadb
+
+- name: Remove test database and access to it
+  mysql_db:
+    name: test
+    state: absent
+  notify: Restart mariadb
+
+- name: Remove anonymous users
+  mysql_user:
+    name: ''
+    host_all: yes
+    state: absent
+  notify: Restart mariadb
+
+- name: copy disallow_root_login_remotely.sql
+  copy:
+    src: 'disallow_root_login_remotely.sql'
+    dest: '/tmp/disallow_root_login_remotely.sql'
+  notify: Restart mariadb
+
+- name: apply disallow_root_login_remotely.sql
+  mysql_db:
+    name: 'mysql'
+    state: import
+    target: '/tmp/disallow_root_login_remotely.sql'
+  notify: Restart mariadb
+
+#- name: Disallow root login remotely
+#  mysql_user:
+#    name: root
+#    login_user: "{{ mariadb_su_user }}"
+#    login_password: "{{ mariadb_su_password }}"
+#    host: "{{ mariadb_hostname }}"
+#    state: absent
+#  notify: Restart mariadb
