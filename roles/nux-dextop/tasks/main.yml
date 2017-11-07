@@ -1,0 +1,38 @@
+---
+- name: Add EPEL repository
+  yum_repository:
+    name: epel
+    description: EPEL YUM repo
+    baseurl: https://download.fedoraproject.org/pub/epel/$releaseserver/$basearch/
+    gpgcheck: yes
+    enabled: no
+
+- name: Install GPG-KEY EPEL
+  rpm_key:
+    state: present
+    key: http://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7
+
+- name: Add Nux-Dextop repository
+  yum_repository:
+    name: nux-dextop
+    description: Nux.Ro RPMs for general desktop use
+    baseurl:
+      - http://li.nux.ro/download/nux/dextop/el7/$basearch/
+      - http://mirror.li.nux.ro/li.nux.ro/nux/dextop/el7/$basearch/
+    gpgcheck: yes
+    enabled: no
+    protect: no
+
+- name: Add Nux-Dextop repository
+  yum_repository:
+    name: nux-dextop
+    description: Nux.Ro RPMs for general desktop use - testing
+    baseurl: http://li.nux.ro/download/nux/dextop-testing/el7/$basearch/
+    gpgcheck: yes
+    enabled: no
+    protect: no
+
+- name: Install GPG-KEY Nux-Dextop
+  rpm_key:
+    state: present
+    key: http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro

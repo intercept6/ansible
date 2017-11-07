@@ -1,0 +1,8 @@
+---
+- name: Install ClipBucket
+  hosts: clipbucket
+  remote_user: root
+  become: true
+
+  roles:
+    - common
