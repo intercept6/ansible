@@ -1,8 +1,8 @@
 ---
-- name: Update yum
-  yum:
-    name: "*"
-    state: latest
+#- name: Update yum
+#  yum:
+#    name: "*"
+#    state: latest
 
 - name: Install Common Packges
   yum:
