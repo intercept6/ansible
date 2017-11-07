@@ -1,7 +1,7 @@
 ---
 - name: common
-  hosts: kensho
-  remote_user: vagrant
+  hosts: common
+  remote_user: root
   become: true
 
   roles:
