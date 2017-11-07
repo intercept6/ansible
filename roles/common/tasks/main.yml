@@ -1,7 +1,7 @@
 ---
 - name: Update yum
   yum:
-    name: *
+    name: "*"
     state: latest
 
 - name: Install Common Packges
